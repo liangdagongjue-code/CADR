@@ -1,0 +1,49 @@
+{
+  "algorithm": "official_dtcorl_adapter",
+  "dataset_id": "mujoco/halfcheetah/medium-v0",
+  "seed": 0,
+  "eval_seed": 20260823,
+  "device": "cuda",
+  "maximum_delay": 16,
+  "latent_dim": 256,
+  "transformer_hidden_dim": 256,
+  "num_layers": 10,
+  "num_heads": 4,
+  "attention_dropout": 0.1,
+  "residual_dropout": 0.1,
+  "hidden_dropout": 0.1,
+  "dynamics_training_steps": 5000,
+  "dynamics_batch_size": 256,
+  "dynamics_learning_rate": 0.0003,
+  "gradient_clip_norm": 10.0,
+  "validation_fraction": 0.1,
+  "validation_batch_size": 2048,
+  "log_interval": 250,
+  "checkpoint_interval": 1000,
+  "eval_episodes": 5,
+  "ack_lag": 1,
+  "posterior_memory_steps": 128,
+  "posterior_decay_time": 48.0,
+  "posterior_prior_strength": 2.0,
+  "cvar_alpha": 0.2,
+  "scenarios": [
+    {"name": "clean_delay_0", "type": "fixed", "delay": 0},
+    {"name": "fixed_delay_2", "type": "fixed", "delay": 2},
+    {
+      "name": "markov_switching",
+      "type": "markov",
+      "regimes": [
+        {"delays": [0, 1, 2], "probabilities": [0.65, 0.25, 0.10]},
+        {"delays": [3, 5, 7], "probabilities": [0.20, 0.45, 0.35]}
+      ],
+      "transition": [[0.96, 0.04], [0.10, 0.90]]
+    },
+    {
+      "name": "ood_changepoint",
+      "type": "changepoint",
+      "change_step": 500,
+      "before": {"delays": [0, 1, 2], "probabilities": [0.60, 0.30, 0.10]},
+      "after": {"delays": [5, 8, 11], "probabilities": [0.15, 0.45, 0.40]}
+    }
+  ]
+}

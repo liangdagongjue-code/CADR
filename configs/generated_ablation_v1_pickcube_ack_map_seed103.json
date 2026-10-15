@@ -1,0 +1,186 @@
+{
+  "ablation_variant": "ack_map",
+  "ack_lag": 1,
+  "act_horizon": 8,
+  "age_decision_rule": "map",
+  "algorithm": "official_maniskill_diffusion_policy",
+  "checkpoint_interval": 5000,
+  "cvar_alpha": 0.2,
+  "dataset_id": "maniskill/PickCube-v1/motionplanning_state_official_dp_v3_0_1",
+  "dataset_path": "data/maniskill/processed/PickCube-v1/motionplanning_state_official_dp_v3_0_1/trajectory.state.pd_ee_delta_pos.physx_cpu.h5",
+  "dataset_type": "maniskill",
+  "device": "cuda",
+  "dynamics_batch_size": 512,
+  "dynamics_hidden_dims": [
+    256,
+    256
+  ],
+  "dynamics_learning_rate": 0.0003,
+  "dynamics_training_steps": 20000,
+  "ensemble_size": 5,
+  "entropy_gate_threshold": 1.4,
+  "environment": {
+    "control_mode": "pd_ee_delta_pos",
+    "env_id": "PickCube-v1",
+    "max_episode_steps": 100,
+    "obs_mode": "state",
+    "reward_mode": "sparse",
+    "sim_backend": "physx_cpu",
+    "type": "maniskill"
+  },
+  "eval_episodes": 20,
+  "eval_seed": 51000007,
+  "experiment_series": "ablation_v1_formal_v1_maniskill_synthetic_ack_map",
+  "include_oracle_upper_bound": false,
+  "log_interval": 500,
+  "max_delay": 8,
+  "num_demos": 100,
+  "obs_horizon": 2,
+  "posterior_decay_time": 24.0,
+  "posterior_memory_steps": 64,
+  "posterior_prior_strength": 2.0,
+  "pred_horizon": 16,
+  "required_methods": [
+    "official_maniskill_dp_direct_delayed_observation",
+    "cadr_dp_ablation_ack_map_plus_official_maniskill_dp"
+  ],
+  "scenarios": [
+    {
+      "delay": 0,
+      "name": "clean_delay_0",
+      "type": "fixed"
+    },
+    {
+      "delay": 1,
+      "name": "fixed_delay_1",
+      "type": "fixed"
+    },
+    {
+      "delay": 2,
+      "name": "fixed_delay_2",
+      "type": "fixed"
+    },
+    {
+      "delay": 4,
+      "name": "fixed_delay_4",
+      "type": "fixed"
+    },
+    {
+      "delay": 8,
+      "name": "fixed_delay_8",
+      "type": "fixed"
+    },
+    {
+      "delays": [
+        0,
+        1,
+        2
+      ],
+      "name": "iid_in_distribution",
+      "probabilities": [
+        0.65,
+        0.25,
+        0.1
+      ],
+      "type": "categorical"
+    },
+    {
+      "name": "markov_switching",
+      "regimes": [
+        {
+          "delays": [
+            0,
+            1
+          ],
+          "probabilities": [
+            0.8,
+            0.2
+          ]
+        },
+        {
+          "delays": [
+            2,
+            3,
+            5
+          ],
+          "probabilities": [
+            0.2,
+            0.5,
+            0.3
+          ]
+        }
+      ],
+      "transition": [
+        [
+          0.97,
+          0.03
+        ],
+        [
+          0.12,
+          0.88
+        ]
+      ],
+      "type": "markov"
+    },
+    {
+      "after": {
+        "delays": [
+          4,
+          6,
+          8
+        ],
+        "probabilities": [
+          0.2,
+          0.5,
+          0.3
+        ]
+      },
+      "before": {
+        "delays": [
+          0,
+          1
+        ],
+        "probabilities": [
+          0.8,
+          0.2
+        ]
+      },
+      "change_step": 25,
+      "name": "ood_changepoint",
+      "type": "changepoint"
+    },
+    {
+      "delays": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        8
+      ],
+      "end_probabilities": [
+        0.05,
+        0.05,
+        0.1,
+        0.2,
+        0.3,
+        0.3
+      ],
+      "horizon_steps": 100,
+      "name": "ood_drifting",
+      "start_probabilities": [
+        0.75,
+        0.2,
+        0.05,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "type": "drifting"
+    }
+  ],
+  "seed": 103,
+  "training_steps": 30000,
+  "use_content_conditioning": false,
+  "validation_batch_size": 4096
+}

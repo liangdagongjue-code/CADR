@@ -1,0 +1,219 @@
+{
+  "ack_lag": 1,
+  "age_decision_rule": "posterior_mean",
+  "algorithm": "cadr",
+  "checkpoint_interval": 10000,
+  "cvar_alpha": 0.2,
+  "dataset_id": "D4RL/door/expert-v2",
+  "device": "cuda",
+  "dynamics_batch_size": 1024,
+  "dynamics_hidden_dims": [
+    256,
+    256
+  ],
+  "dynamics_learning_rate": 0.0003,
+  "dynamics_training_steps": 50000,
+  "ensemble_size": 5,
+  "entropy_gate_threshold": 1.4,
+  "eval_episodes": 20,
+  "eval_seed": 31000001,
+  "experiment_series": "formal_v1_minari_synthetic",
+  "log_interval": 1000,
+  "max_delay": 32,
+  "posterior_decay_time": 48.0,
+  "posterior_memory_steps": 128,
+  "posterior_prior_strength": 2.0,
+  "required_methods": [
+    "direct_observation_iql",
+    "cadr_iql",
+    "official_dtcorl_transformer_ack_map_adapter",
+    "official_dtcorl_transformer_oracle_age_upper_bound"
+  ],
+  "risk_blend": 0.0,
+  "scenarios": [
+    {
+      "delay": 0,
+      "name": "clean_delay_0",
+      "type": "fixed"
+    },
+    {
+      "delay": 1,
+      "name": "fixed_delay_1",
+      "type": "fixed"
+    },
+    {
+      "delay": 2,
+      "name": "fixed_delay_2",
+      "type": "fixed"
+    },
+    {
+      "delay": 4,
+      "name": "fixed_delay_4",
+      "type": "fixed"
+    },
+    {
+      "delay": 8,
+      "name": "fixed_delay_8",
+      "type": "fixed"
+    },
+    {
+      "delay": 16,
+      "name": "fixed_delay_16",
+      "type": "fixed"
+    },
+    {
+      "delays": [
+        0,
+        1,
+        2
+      ],
+      "name": "iid_in_support",
+      "probabilities": [
+        0.65,
+        0.25,
+        0.1
+      ],
+      "type": "categorical"
+    },
+    {
+      "name": "markov_switching",
+      "regimes": [
+        {
+          "delays": [
+            0,
+            1,
+            2
+          ],
+          "probabilities": [
+            0.65,
+            0.25,
+            0.1
+          ]
+        },
+        {
+          "delays": [
+            3,
+            5,
+            7
+          ],
+          "probabilities": [
+            0.2,
+            0.45,
+            0.35
+          ]
+        }
+      ],
+      "transition": [
+        [
+          0.96,
+          0.04
+        ],
+        [
+          0.1,
+          0.9
+        ]
+      ],
+      "type": "markov"
+    },
+    {
+      "after": {
+        "delays": [
+          2,
+          3,
+          5
+        ],
+        "probabilities": [
+          0.15,
+          0.45,
+          0.4
+        ]
+      },
+      "before": {
+        "delays": [
+          0,
+          1,
+          2
+        ],
+        "probabilities": [
+          0.7,
+          0.2,
+          0.1
+        ]
+      },
+      "change_step": 50,
+      "name": "changepoint_in_support",
+      "type": "changepoint"
+    },
+    {
+      "delays": [
+        0,
+        1,
+        2,
+        5,
+        8
+      ],
+      "end_probabilities": [
+        0.05,
+        0.05,
+        0.1,
+        0.4,
+        0.4
+      ],
+      "horizon_steps": 200,
+      "name": "drifting_to_long_delay",
+      "start_probabilities": [
+        0.7,
+        0.2,
+        0.1,
+        0.0,
+        0.0
+      ],
+      "type": "drifting"
+    },
+    {
+      "delays": [
+        8,
+        12,
+        16
+      ],
+      "name": "ood_support_shift",
+      "probabilities": [
+        0.2,
+        0.45,
+        0.35
+      ],
+      "type": "categorical"
+    },
+    {
+      "after": {
+        "delays": [
+          5,
+          8,
+          11
+        ],
+        "probabilities": [
+          0.15,
+          0.45,
+          0.4
+        ]
+      },
+      "before": {
+        "delays": [
+          0,
+          1,
+          2
+        ],
+        "probabilities": [
+          0.6,
+          0.3,
+          0.1
+        ]
+      },
+      "change_step": 50,
+      "name": "ood_changepoint",
+      "type": "changepoint"
+    }
+  ],
+  "seed": 103,
+  "validation_batch_size": 8192
+}

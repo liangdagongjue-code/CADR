@@ -1,0 +1,50 @@
+{
+  "algorithm": "official_maniskill_diffusion_policy",
+  "dataset_type": "maniskill",
+  "dataset_id": "maniskill/PegInsertionSide-v1/motionplanning_state_official_dp_v3_0_1",
+  "dataset_path": "data/maniskill/processed/PegInsertionSide-v1/motionplanning_state_official_dp_v3_0_1/trajectory.state.pd_ee_delta_pose.physx_cpu.h5",
+  "environment": {
+    "type": "maniskill",
+    "env_id": "PegInsertionSide-v1",
+    "obs_mode": "state",
+    "control_mode": "pd_ee_delta_pose",
+    "reward_mode": "sparse",
+    "sim_backend": "physx_cpu",
+    "max_episode_steps": 300
+  },
+  "seed": 0,
+  "eval_seed": 20260823,
+  "device": "cuda",
+  "num_demos": 100,
+  "training_steps": 100000,
+  "obs_horizon": 2,
+  "act_horizon": 8,
+  "pred_horizon": 16,
+  "dynamics_training_steps": 20000,
+  "dynamics_batch_size": 512,
+  "dynamics_hidden_dims": [256, 256],
+  "ensemble_size": 5,
+  "dynamics_learning_rate": 0.0003,
+  "validation_batch_size": 4096,
+  "log_interval": 500,
+  "checkpoint_interval": 5000,
+  "posterior_memory_steps": 64,
+  "posterior_decay_time": 24.0,
+  "posterior_prior_strength": 2.0,
+  "age_decision_rule": "posterior_mean",
+  "entropy_gate_threshold": 1.4,
+  "risk_blend": 8.0,
+  "eval_episodes": 20,
+  "ack_lag": 1,
+  "max_delay": 8,
+  "cvar_alpha": 0.2,
+  "scenarios": [
+    {
+      "name": "ood_changepoint",
+      "type": "changepoint",
+      "change_step": 150,
+      "before": {"delays": [0, 1], "probabilities": [0.8, 0.2]},
+      "after": {"delays": [4, 6, 8], "probabilities": [0.2, 0.5, 0.3]}
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "algorithm": "official_dtcorl_adapter",
+  "dataset_id": "mujoco/halfcheetah/medium-v0",
+  "seed": 0,
+  "eval_seed": 20260823,
+  "device": "cuda",
+  "maximum_delay": 16,
+  "latent_dim": 256,
+  "transformer_hidden_dim": 256,
+  "num_layers": 10,
+  "num_heads": 4,
+  "attention_dropout": 0.1,
+  "residual_dropout": 0.1,
+  "hidden_dropout": 0.1,
+  "dynamics_training_steps": 100,
+  "dynamics_batch_size": 64,
+  "dynamics_learning_rate": 0.0003,
+  "gradient_clip_norm": 10.0,
+  "validation_fraction": 0.1,
+  "validation_batch_size": 256,
+  "log_interval": 25,
+  "checkpoint_interval": 50,
+  "eval_episodes": 1,
+  "ack_lag": 1,
+  "posterior_memory_steps": 128,
+  "posterior_decay_time": 48.0,
+  "posterior_prior_strength": 2.0,
+  "cvar_alpha": 0.2,
+  "scenarios": [
+    {"name": "clean_delay_0", "type": "fixed", "delay": 0},
+    {"name": "fixed_delay_2", "type": "fixed", "delay": 2}
+  ]
+}

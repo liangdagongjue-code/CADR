@@ -1,0 +1,142 @@
+{
+  "ack_lag": 1,
+  "act_horizon": 8,
+  "age_decision_rule": "posterior_mean",
+  "algorithm": "official_maniskill_diffusion_policy",
+  "checkpoint_interval": 5000,
+  "cvar_alpha": 0.2,
+  "dataset_id": "maniskill/PickCube-v1/motionplanning_state_official_dp_v3_0_1",
+  "dataset_path": "data/maniskill/processed/PickCube-v1/motionplanning_state_official_dp_v3_0_1/trajectory.state.pd_ee_delta_pos.physx_cpu.h5",
+  "dataset_type": "maniskill",
+  "device": "cuda",
+  "dynamics_batch_size": 512,
+  "dynamics_hidden_dims": [
+    256,
+    256
+  ],
+  "dynamics_learning_rate": 0.0003,
+  "dynamics_training_steps": 20000,
+  "ensemble_size": 5,
+  "entropy_gate_threshold": 1.4,
+  "environment": {
+    "control_mode": "pd_ee_delta_pos",
+    "env_id": "PickCube-v1",
+    "max_episode_steps": 100,
+    "obs_mode": "state",
+    "reward_mode": "sparse",
+    "sim_backend": "physx_cpu",
+    "type": "maniskill"
+  },
+  "eval_episodes": 10,
+  "eval_seed": 52000009,
+  "experiment_series": "formal_v1_maniskill_real_network",
+  "include_oracle_upper_bound": true,
+  "log_interval": 500,
+  "max_delay": 32,
+  "num_demos": 100,
+  "obs_horizon": 2,
+  "posterior_decay_time": 48.0,
+  "posterior_memory_steps": 128,
+  "posterior_prior_strength": 2.0,
+  "pred_horizon": 16,
+  "required_methods": [
+    "official_maniskill_dp_direct_delayed_observation",
+    "cadr_posterior_state_reconstruction_plus_official_maniskill_dp",
+    "privileged_oracle_age_state_reconstruction_plus_official_maniskill_dp_upper_bound"
+  ],
+  "scenarios": [
+    {
+      "delay_column": "delay_steps_x1",
+      "name": "wifi_gateway_native",
+      "path": "wifi/wlan_gateway_50ms.csv",
+      "type": "trace"
+    },
+    {
+      "delay_column": "delay_steps_x2",
+      "name": "wifi_gateway_x2",
+      "path": "wifi/wlan_gateway_50ms.csv",
+      "type": "trace"
+    },
+    {
+      "delay_column": "delay_steps_x4",
+      "name": "wifi_gateway_x4",
+      "path": "wifi/wlan_gateway_50ms.csv",
+      "type": "trace"
+    },
+    {
+      "delay_column": "delay_steps_x1",
+      "name": "wifi_internet_native",
+      "path": "wifi/wlan_bound_google_v4_50ms.csv",
+      "type": "trace"
+    },
+    {
+      "delay_column": "delay_steps_x2",
+      "name": "wifi_internet_x2",
+      "path": "wifi/wlan_bound_google_v4_50ms.csv",
+      "type": "trace"
+    },
+    {
+      "delay_column": "delay_steps_x4",
+      "name": "wifi_internet_x4",
+      "path": "wifi/wlan_bound_google_v4_50ms.csv",
+      "type": "trace"
+    },
+    {
+      "delay_column": "delay_steps_x1",
+      "name": "5g_tmobile_native",
+      "path": "5g/pam2025_50ms/tmobile/d2/tmobile_day_1_d2_rtt.csv",
+      "type": "trace"
+    },
+    {
+      "delay_column": "delay_steps_x2",
+      "name": "5g_tmobile_x2",
+      "path": "5g/pam2025_50ms/tmobile/d2/tmobile_day_1_d2_rtt.csv",
+      "type": "trace"
+    },
+    {
+      "delay_column": "delay_steps_x4",
+      "name": "5g_tmobile_x4",
+      "path": "5g/pam2025_50ms/tmobile/d2/tmobile_day_1_d2_rtt.csv",
+      "type": "trace"
+    },
+    {
+      "delay_column": "delay_steps_x1",
+      "name": "5g_atnt_native",
+      "path": "5g/pam2025_50ms/atnt/d3/atnt_day_2_d3_rtt.csv",
+      "type": "trace"
+    },
+    {
+      "delay_column": "delay_steps_x2",
+      "name": "5g_atnt_x2",
+      "path": "5g/pam2025_50ms/atnt/d3/atnt_day_2_d3_rtt.csv",
+      "type": "trace"
+    },
+    {
+      "delay_column": "delay_steps_x4",
+      "name": "5g_atnt_x4",
+      "path": "5g/pam2025_50ms/atnt/d3/atnt_day_2_d3_rtt.csv",
+      "type": "trace"
+    },
+    {
+      "delay_column": "delay_steps_x1",
+      "name": "5g_verizon_native",
+      "path": "5g/pam2025_50ms/verizon/d3/verizon_day_3_d3_rtt.csv",
+      "type": "trace"
+    },
+    {
+      "delay_column": "delay_steps_x2",
+      "name": "5g_verizon_x2",
+      "path": "5g/pam2025_50ms/verizon/d3/verizon_day_3_d3_rtt.csv",
+      "type": "trace"
+    },
+    {
+      "delay_column": "delay_steps_x4",
+      "name": "5g_verizon_x4",
+      "path": "5g/pam2025_50ms/verizon/d3/verizon_day_3_d3_rtt.csv",
+      "type": "trace"
+    }
+  ],
+  "seed": 101,
+  "training_steps": 30000,
+  "validation_batch_size": 4096
+}

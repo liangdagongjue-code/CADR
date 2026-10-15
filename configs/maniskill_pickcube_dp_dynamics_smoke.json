@@ -1,0 +1,16 @@
+{
+  "algorithm": "cadr_dynamics_smoke",
+  "dataset_type": "maniskill",
+  "dataset_id": "maniskill/PickCube-v1/motionplanning_state_official_dp_v3_0_1",
+  "dataset_path": "data/maniskill/processed/PickCube-v1/motionplanning_state_official_dp_v3_0_1/trajectory.state.pd_ee_delta_pos.physx_cpu.h5",
+  "seed": 0,
+  "device": "cuda",
+  "dynamics_training_steps": 2,
+  "dynamics_batch_size": 32,
+  "dynamics_hidden_dims": [32, 32],
+  "ensemble_size": 2,
+  "dynamics_learning_rate": 0.0003,
+  "validation_batch_size": 64,
+  "log_interval": 1,
+  "checkpoint_interval": 1
+}

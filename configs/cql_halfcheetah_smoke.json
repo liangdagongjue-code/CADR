@@ -1,0 +1,27 @@
+{
+  "algorithm": "cql",
+  "dataset_id": "mujoco/halfcheetah/medium-v0",
+  "seed": 0,
+  "eval_seed": 20260823,
+  "device": "cuda",
+  "training_steps": 1000,
+  "batch_size": 256,
+  "hidden_dims": [256, 256],
+  "learning_rate": 0.0003,
+  "gamma": 0.99,
+  "target_tau": 0.005,
+  "cql_alpha": 5.0,
+  "cql_temperature": 1.0,
+  "cql_n_actions": 10,
+  "bc_steps": 10000,
+  "initial_entropy_alpha": 1.0,
+  "log_interval": 100,
+  "checkpoint_interval": 500,
+  "eval_episodes": 2,
+  "ack_lag": 1,
+  "cvar_alpha": 0.2,
+  "scenarios": [
+    {"name": "clean_delay_0", "type": "fixed", "delay": 0},
+    {"name": "fixed_delay_2", "type": "fixed", "delay": 2}
+  ]
+}

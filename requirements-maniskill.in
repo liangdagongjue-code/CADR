@@ -1,0 +1,2 @@
+# Installed in a separate remote venv to isolate SAPIEN/PhysX dependencies.
+mani-skill==3.0.1

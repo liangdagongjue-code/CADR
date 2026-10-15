@@ -1,0 +1,58 @@
+{
+  "algorithm": "cadr",
+  "dataset_type": "maniskill",
+  "dataset_id": "maniskill/PickCube-v1/motionplanning_state_cpu_v1",
+  "dataset_path": "data/maniskill/processed/PickCube-v1/motionplanning_state_cpu_v1/trajectory.state.pd_joint_pos.physx_cpu.h5",
+  "action_low": [-2.8973, -1.7628, -2.8973, -3.0718, -2.8973, -0.0175, -2.8973, -1.0],
+  "action_high": [2.8973, 1.7628, 2.8973, -0.0698, 2.8973, 3.7525, 2.8973, 1.0],
+  "environment": {
+    "type": "maniskill",
+    "env_id": "PickCube-v1",
+    "obs_mode": "state",
+    "control_mode": "pd_joint_pos",
+    "reward_mode": "normalized_dense",
+    "sim_backend": "physx_cpu",
+    "max_episode_steps": 50
+  },
+  "seed": 0,
+  "eval_seed": 20260823,
+  "device": "cuda",
+  "dynamics_training_steps": 20000,
+  "dynamics_batch_size": 512,
+  "dynamics_hidden_dims": [256, 256],
+  "ensemble_size": 5,
+  "dynamics_learning_rate": 0.0003,
+  "validation_batch_size": 4096,
+  "log_interval": 500,
+  "checkpoint_interval": 5000,
+  "eval_episodes": 20,
+  "ack_lag": 1,
+  "max_delay": 8,
+  "posterior_memory_steps": 64,
+  "posterior_decay_time": 24.0,
+  "posterior_prior_strength": 2.0,
+  "risk_blend": 0.0,
+  "age_decision_rule": "posterior_mean",
+  "entropy_gate_threshold": 1.4,
+  "cvar_alpha": 0.2,
+  "scenarios": [
+    {"name": "clean_delay_0", "type": "fixed", "delay": 0},
+    {"name": "fixed_delay_1", "type": "fixed", "delay": 1},
+    {
+      "name": "markov_switching",
+      "type": "markov",
+      "regimes": [
+        {"delays": [0, 1], "probabilities": [0.8, 0.2]},
+        {"delays": [2, 3, 5], "probabilities": [0.2, 0.5, 0.3]}
+      ],
+      "transition": [[0.97, 0.03], [0.12, 0.88]]
+    },
+    {
+      "name": "ood_changepoint",
+      "type": "changepoint",
+      "change_step": 25,
+      "before": {"delays": [0, 1], "probabilities": [0.8, 0.2]},
+      "after": {"delays": [4, 6, 8], "probabilities": [0.2, 0.5, 0.3]}
+    }
+  ]
+}

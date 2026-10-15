@@ -1,0 +1,8 @@
+# Pinned additions used by the official ManiSkill v3.0.1 state Diffusion Policy.
+# ManiSkill itself remains pinned in requirements-maniskill.in.
+# The upstream DP evaluator relies on Gymnasium 0.29's vector final_info API;
+# ManiSkill's open-ended >=0.29.1 requirement otherwise resolves to incompatible
+# Gymnasium 1.x releases.
+gymnasium==0.29.1
+diffusers==0.35.2
+tensorboard==2.20.0

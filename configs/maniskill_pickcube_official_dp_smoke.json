@@ -1,0 +1,29 @@
+{
+  "algorithm": "official_maniskill_diffusion_policy",
+  "dataset_type": "maniskill",
+  "dataset_id": "maniskill/PickCube-v1/motionplanning_state_official_dp_v3_0_1",
+  "dataset_path": "data/maniskill/processed/PickCube-v1/motionplanning_state_official_dp_v3_0_1/trajectory.state.pd_ee_delta_pos.physx_cpu.h5",
+  "environment": {
+    "type": "maniskill",
+    "env_id": "PickCube-v1",
+    "obs_mode": "state",
+    "control_mode": "pd_ee_delta_pos",
+    "reward_mode": "sparse",
+    "sim_backend": "physx_cpu",
+    "max_episode_steps": 100
+  },
+  "seed": 0,
+  "eval_seed": 20260823,
+  "device": "cuda",
+  "obs_horizon": 2,
+  "act_horizon": 8,
+  "pred_horizon": 16,
+  "eval_episodes": 1,
+  "ack_lag": 1,
+  "max_delay": 8,
+  "cvar_alpha": 0.2,
+  "scenarios": [
+    {"name": "clean_delay_0", "type": "fixed", "delay": 0},
+    {"name": "fixed_delay_1", "type": "fixed", "delay": 1}
+  ]
+}
