@@ -105,4 +105,4 @@ in the repository and must be tested in a functioning research environment;
 this release does not claim a fully passing simulator/dependency test suite.
 It does not repeat the ten-task/five-seed experiments, distribute raw training
 data, or assert that the private archive/audit gate can be run from this public
-code-only checkout.
+checkout.

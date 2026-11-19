@@ -7,8 +7,8 @@ actions that were actually executed. Policy and dynamics parameters stay fixed
 during delayed deployment.
 
 This repository accompanies *Censored-ACK State Reconstruction for Frozen
-Offline Policies under Hidden Non-Stationary Observation Delays*. The manuscript
-is in preparation; this repository does not imply acceptance or publication.
+Offline Policies under Hidden Non-Stationary Observation Delays*.
+[Read the author manuscript (PDF, 2026-11-02)](docs/CADR.pdf).
 
 ## What is included
 
@@ -17,6 +17,7 @@ is in preparation; this repository does not imply acceptance or publication.
   architecture, and chunk-consistent CADR-DP evaluation.
 - Experiment configurations, core unit tests, and captured environment package lists.
 - A small linear-control smoke example that does not require a GPU or simulators.
+- The English author manuscript.
 
 The manuscript studies ten tasks: three MuJoCo locomotion tasks, four Adroit
 tasks, and three ManiSkill tasks. The IQL and Diffusion Policy interfaces are
@@ -50,7 +51,7 @@ python -m pytest tests/test_delay_channel.py tests/test_smoke.py tests/test_trac
 ## Reproducing the research experiments
 
 See [the reproduction guide](docs/REPRODUCING.md) for dependencies, dataset IDs,
-training/evaluation entry points, and the scope of this code-only release.
+training and evaluation entry points, and the scope of the released code.
 Keep the research and ManiSkill environments separate: their Gymnasium versions
 are intentionally different. Captured package lists are environment records,
 not a promise that every package can be installed on every operating system.
@@ -71,9 +72,10 @@ not a promise that every package can be installed on every operating system.
 
 ## Release scope
 
-This is a **code-only release**. Datasets, checkpoints, raw network captures,
-per-run results, internal archive-audit infrastructure, server synchronization
-scripts, and manuscript drafts are not distributed here. Trace-based configs
+This repository includes the research code and the author manuscript. Datasets,
+checkpoints, raw network captures, per-run results, internal archive-audit
+infrastructure, server synchronization scripts, and submission materials are
+not distributed here. Trace-based configs
 require the corresponding processed trace files; those files are not bundled.
 The legacy `formal_freeze` and archival tools expect additional research assets
 and are not a self-contained public reproduction gate.
@@ -85,8 +87,7 @@ been selected by the authors**.
 
 ## Citation
 
-The manuscript has no assigned DOI or acceptance status. A formal citation will
-be added when an author-approved public manuscript identifier is available.
+For the title and author list, see the [author manuscript](docs/CADR.pdf).
 
 ## Issues
 
